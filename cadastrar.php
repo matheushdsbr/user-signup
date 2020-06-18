@@ -2,6 +2,8 @@
 session_start();
 ob_start();
 
+$errors = array();
+
 $nome = "";
 $email = "";
 $usuario = "";
@@ -32,15 +34,25 @@ if($btnCadUsuario){
 
 		if (empty($nome)) {
 			$bordaErroNome = 'border: 2px solid red;';
+			$errors['nome'] = '<p class="text-danger">*Preencha o campo Nome</p>';
 		}
+
+		//if (!filter_var($email, FILTER_VALIDATE_EMAIL) {
+		//	$errors['email'] = "E-mail Inválido";
+		//	$bordaErroEmail = 'border: 2px solid red;';
+		//}
+
 		if (empty($email)) {
 			$bordaErroEmail = 'border: 2px solid red;';
+			$errors['email'] = '<p class="text-danger">*Preencha o campo E-mail</p>';
 		}
 		if (empty($usuario)) {
 			$bordaErroUsuario = 'border: 2px solid red;';
+			$errors['usuario'] = '<p class="text-danger">*Preencha o campo Usuário</p>';
 		}
 		if (empty($senha)) {
 			$bordaErroSenha = 'border: 2px solid red;';
+			$errors['senha'] = '<p class="text-danger">*Preencha o campo Senha</p>';
 		}
 	}
 
@@ -103,6 +115,14 @@ if($btnCadUsuario){
 				unset($_SESSION['msg']);
 			}
 		?>
+
+		<?php if(count($errors) > 0): ?>
+				<?php foreach($errors as $error): ?>
+					<?php echo $error ?>
+				<?php endforeach; ?>
+			</div>
+		<?php endif; ?>
+
 		<form method="POST" action="">
 			<label>Nome</label>
 			<input type="text" style="<?php echo $bordaErroNome; ?>" name="nome" value="<?php echo $nome; ?>" placeholder="Digite o nome e o sobrenome" ><br><br>
