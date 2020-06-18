@@ -61,7 +61,7 @@ if($btnCadUsuario){
 		$resultado_usuario = mysqli_query($conn, $result_usuario);
 		if(($resultado_usuario) AND ($resultado_usuario->num_rows != 0)){
 			$erro = true;
-			$_SESSION['msg'] = '<p class="text-danger">Este usuário já está sendo utilizado</p>';
+			$errors['usuario'] = '<p class="text-danger">Este usuário já está sendo utilizado</p>';
 
 			$bordaErroUsuario = 'border: 2px solid red;';
 		}
@@ -70,7 +70,7 @@ if($btnCadUsuario){
 		$resultado_usuario = mysqli_query($conn, $result_usuario);
 		if(($resultado_usuario) AND ($resultado_usuario->num_rows != 0)){
 			$erro = true;
-			$_SESSION['msg'] = '<p class="text-danger">Este e-mail já está cadastrado</p>';
+			$errors['email'] = '<p class="text-danger">Este e-mail já está cadastrado</p>';
 
 			$bordaErroEmail = 'border: 2px solid red;';
 		}
