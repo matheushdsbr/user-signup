@@ -90,16 +90,17 @@ if($btnCadUsuario){
 		//var_dump($dados);
 		$dados['senha'] = password_hash($dados['senha'], PASSWORD_DEFAULT);
 
-		$result_usuario = "INSERT INTO usuarios (nome, email, usuario, senha) VALUES (
+		$result_usuario = "INSERT INTO usuarios (nome, email, usuario, senha, token) VALUES (
 						'" .$dados['nome']. "',
 						'" .$dados['email']. "',
 						'" .$dados['usuario']. "',
-						'" .$dados['senha']. "'
+						'" .$dados['senha']. "',
+						'" .$dados['token']. "'
 						)";
 		$resultado_usario = mysqli_query($conn, $result_usuario);
 		if(mysqli_insert_id($conn)){
 			$_SESSION['msgcad'] = '<p class="text-success">Usuário cadastrado com sucesso</p>';
-			header("Location: login.php");
+			header("Location: login-pf.php");
 		}else{
 			$_SESSION['msg'] = '<p class="text-danger">Erro ao cadastrar o usuário</p>';
 		}
@@ -129,7 +130,6 @@ if($btnCadUsuario){
 				<?php foreach($errors as $error): ?>
 					<?php echo $error ?>
 				<?php endforeach; ?>
-			</div>
 		<?php endif; ?>
 
 		<form method="POST" action="">
@@ -147,7 +147,7 @@ if($btnCadUsuario){
 
 			<input type="submit" name="btnCadUsuario" value="Cadastrar"><br><br>
 
-			<p>Lembrou? <a href="login.php">Clique aqui</a> para logar</p>
+			<p>Lembrou? <a href="login-pf.php">Clique aqui</a> para logar</p>
 
 		</form>
 

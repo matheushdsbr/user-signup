@@ -5,5 +5,5 @@ if(!empty($_SESSION['id'])){
 	echo "<a href='sair.php'>Sair</a>";
 }else{
 	$_SESSION['msg'] = "Área restrita";
-	header("Location: login.php");	
+	header("Location: login-pf.php");	
 }

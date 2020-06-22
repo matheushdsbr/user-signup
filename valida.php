@@ -20,15 +20,15 @@ if($btnLogin){
 				$_SESSION['email'] = $row_usuario['email'];
 				header("Location: administrativo.php");
 			}else{
-				$_SESSION['msg'] = "Login e senha incorreto!";
-				header("Location: login.php");
+				$_SESSION['msg'] = "Login e senha incorreto!1";
+				header("Location: login-pf.php");
 			}
 		}
 	}else{
-		$_SESSION['msg'] = "Login e senha incorreto!";
-		header("Location: login.php");
+		$_SESSION['msg'] = "Login e senha incorreto!2";
+		header("Location: login-pf.php");
 	}
 }else{
-	$_SESSION['msg'] = "Página não encontrada";
-	header("Location: login.php");
+	$_SESSION['msg'] = "Página não encontrada3";
+	header("Location: login-pf.php");
 }
